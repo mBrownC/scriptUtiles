@@ -1,11 +1,12 @@
-# scriptUtiles# Scripts Útiles - Colección mBrownC
+# Scripts Útiles - Colección mBrownC
 
 Esta carpeta contiene una colección de scripts útiles para administración de sistemas, formateo de discos y automatización de tareas comunes.
 
 ## Índice de Scripts
 
-### External Disk Formatter
+### External Disk Formatter (Linux)
 **Archivo:** `format_dual_option.sh`  
+**Plataforma:** Linux (Ubuntu/Debian)  
 **Descripción:** Script seguro para formatear discos externos USB con compatibilidad total Windows/Mac/Linux  
 **Características:**
 - Solo detecta discos externos (protección del sistema)
@@ -14,33 +15,46 @@ Esta carpeta contiene una colección de scripts útiles para administración de 
 - Soporte para archivos >4GB
 - Verificaciones de seguridad múltiples
 
+### External Disk Formatter (macOS)
+**Archivo:** `format_dual_option_macos.sh`  
+**Plataforma:** macOS (Monterey+ recomendado)  
+**Descripción:** Versión nativa para macOS que formatea discos externos USB para uso universal  
+**Características:**
+- Usa herramientas nativas de macOS (diskutil, system_profiler)
+- Solo detecta discos externos/removibles (protección del sistema)
+- Formato exFAT con esquema MBR para máxima compatibilidad
+- Compatible con Windows, Linux y macOS
+- Desmontaje seguro antes de formatear
+
 ---
 
 ## Instrucciones de Uso
 
-### 1. Preparar el Script
-Antes de ejecutar cualquier script, debes darle permisos de ejecución:
+### Para Linux (Ubuntu/Debian)
 
-```bash
-sudo chmod +x nombre_del_script.sh
-```
-
-**Ejemplo para el formateador de discos:**
+#### 1. Preparar el Script
 ```bash
 sudo chmod +x format_dual_option.sh
 ```
 
-### 2. Ejecutar el Script
-Una vez que el script tenga permisos, ejecútalo con:
-
-```bash
-sudo ./nombre_del_script.sh
-```
-
-**Ejemplo para el formateador de discos:**
+#### 2. Ejecutar el Script
 ```bash
 sudo ./format_dual_option.sh
 ```
+
+### Para macOS
+
+#### 1. Preparar el Script
+```bash
+sudo chmod +x format_dual_option_macos.sh
+```
+
+#### 2. Ejecutar el Script
+```bash
+sudo ./format_dual_option_macos.sh
+```
+
+**Nota:** En macOS no necesitas instalar dependencias adicionales ya que usa herramientas nativas del sistema (diskutil, system_profiler).
 
 ### 3. Comandos Rápidos de Referencia
 
@@ -56,7 +70,7 @@ sudo ./format_dual_option.sh
 
 ## Requisitos del Sistema
 
-### Para External Disk Formatter:
+### Para Linux (External Disk Formatter):
 ```bash
 # Ubuntu/Debian
 sudo apt update
@@ -65,5 +79,15 @@ sudo apt install exfatprogs exfat-fuse util-linux parted
 # Para sistemas más antiguos
 sudo apt install exfat-utils exfat-fuse util-linux parted
 ```
+
+### Para macOS (External Disk Formatter):
+**No requiere instalación de dependencias adicionales**
+
+Los comandos necesarios están incluidos de forma nativa en macOS:
+- `diskutil` - Herramienta de gestión de discos
+- `system_profiler` - Información del sistema
+- `shasum` - Verificación de integridad
+
+**Compatibilidad:** macOS 10.12 (Sierra) o superior, recomendado macOS 12+ (Monterey)
 
 ### Dependencias Generales:
